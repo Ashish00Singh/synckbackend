@@ -76,13 +76,22 @@ WSGI_APPLICATION = 'synckbackend.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     "NAME": "testdb",
+    #     "USER": "root1",
+    #     "PASSWORD": "root",
+    #     "HOST": "127.0.0.1",
+    #     "PORT": "3306",
+    # },
+
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        "NAME": "testdb",
-        "USER": "root1",
-        "PASSWORD": "root",
-        "HOST": "127.0.0.1",
-        "PORT": "3306",
+        "NAME": name,
+        "USER": user1,
+        "PASSWORD":passw,
+        "HOST": host,
+        "PORT":port1,
     }
 }
 
