@@ -1,3 +1,5 @@
+import environ
+import os
 """
 Django settings for synckbackend project.
 
@@ -87,11 +89,11 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        "NAME": name,
-        "USER": user1,
-        "PASSWORD":passw,
-        "HOST": host,
-        "PORT":port1,
+        "NAME": env(name),
+        "USER": env(user1),
+        "PASSWORD":env(passw),
+        "HOST": env(host),
+        "PORT": env(port1),
     }
 }
 
