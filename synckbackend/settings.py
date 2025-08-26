@@ -11,7 +11,18 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import environ
+import os
 
+env = environ.Env(
+    # set default values and casting
+    DEBUG=(bool, False)
+)
+# Read the .env file
+environ.Env.read_env(os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env'))
+
+# Test if it loads
+print(env('DB_NAME', default='NotFound'))
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -78,11 +89,11 @@ WSGI_APPLICATION = 'synckbackend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        "NAME": "testdb",
-        "USER": "root1",
-        "PASSWORD": "root",
-        "HOST": "127.0.0.1",
-        "PORT": "3306",
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
     }
 }
 
