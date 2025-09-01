@@ -12,3 +12,11 @@ class SynckPlan(models.Model):
     featcher = models.TextField(blank=False, null=False)
     update= models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)
+
+    def save(self, *args, **kwargs):
+        if self.planId:
+            self.planId = self.planId.upper()   # force uppercase
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.planId}"

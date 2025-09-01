@@ -24,4 +24,5 @@ urlpatterns = [
     path('home/', home_page),
     path('apo/v1/', include('api.urls')),
     path('additiona/v1/', include('addiPlans.urls')),
+    path('login/v1/', include('register.urls')),
 ]

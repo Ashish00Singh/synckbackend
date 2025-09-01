@@ -6,5 +6,5 @@ from api.serializers import SynckHealthPlan
 # Create your views here.
 
 class SynckHealthViewSet(viewsets.ModelViewSet):
-    queryset=SynckPlan.objects.all()
+    queryset=SynckPlan.objects.all().order_by('-id')
     serializer_class=SynckHealthPlan
