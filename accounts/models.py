@@ -1,7 +1,7 @@
 from django.db import models
 import re
 from django.core.exceptions import ValidationError
-from django.contrib.postgres.fields import ArrayField
+from django.contrib.auth.models import AbstractBaseUser
 
 
 def validate_strong_password(password):
@@ -17,14 +17,14 @@ def validate_strong_password(password):
         raise ValidationError("Password must contain at least one special character (@, $, !, %, *, ?, &)")
 
 
-class Registerlogin(models.Model):
+class Registerlogin(AbstractBaseUser):
     ROLE_CHOICES = [
         ("manager", "Manager"),
         ("retailer", "Retailer"),
         ("admin", "Admin"),
         ("normal", "Normal"),
     ]
-
+    last_login = None
     name = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
     department = models.CharField(max_length=100, choices=ROLE_CHOICES)
@@ -32,11 +32,12 @@ class Registerlogin(models.Model):
         max_length=128,
         validators=[validate_strong_password]
     )
-    permissions = ArrayField(
-        models.CharField(max_length=50),
-        default=list,
-        blank=True
-    )
+    permission = models.TextField()
+
+    # is_active = models.BooleanField(default=True)
+
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["name"]
 
     def __str__(self):
-        return f"{self.name} ({self.department})"
+        return self.email
