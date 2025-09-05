@@ -31,6 +31,4 @@ urlpatterns = [
     path('additiona/v1/', include('addiPlans.urls')),
     path('login/v1/', include('accounts.urls')),
     path('api/v1/', include('onBoarding.urls')),
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
