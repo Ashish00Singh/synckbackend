@@ -1,11 +1,18 @@
 # onbording/serializers.py
 from rest_framework import serializers
 from .models import Onboarding
+from accounts.models import Registerlogin
 
 class OnboardingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Onboarding
         fields = "__all__"
+
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Only show active users in dropdowns/choices
+        self.fields['user'].queryset = Registerlogin.objects.filter(active=True)
 
     # def validate(self, data):
     #     # Require at least individual or corporate fields

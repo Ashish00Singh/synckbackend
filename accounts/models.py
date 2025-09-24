@@ -28,6 +28,7 @@ class Registerlogin(AbstractBaseUser):
     name = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
     department = models.CharField(max_length=100, choices=ROLE_CHOICES)
+    active = models.BooleanField(default=True)
     password = models.CharField(
         max_length=128,
         validators=[validate_strong_password]

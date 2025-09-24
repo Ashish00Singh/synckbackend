@@ -14,6 +14,10 @@ environ.Env.read_env(os.path.join(os.path.dirname(os.path.dirname(__file__)), '.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+# displaying the uploaded the file
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -24,7 +28,7 @@ SECRET_KEY = 'django-insecure-%($%2&_y9v!5+%ekn-9ay_au2kz^rdkqmd!xf)2_kd_d(r$)dt
 DEBUG = True
 CORS_ALLOW_ALL_ORIGINS = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "http://localhost:8000", "192.168.0.69:8000", "192.168.0.69",]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "192.168.0.69:8000", "192.168.0.69",]
 
 
 # Application definition
@@ -42,6 +46,7 @@ INSTALLED_APPS = [
     'addiPlans',
     'accounts',
     'onBoarding',
+    'distributer',
 ]
 
 MIDDLEWARE = [

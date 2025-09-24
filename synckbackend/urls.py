@@ -21,7 +21,8 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -31,4 +32,6 @@ urlpatterns = [
     path('additiona/v1/', include('addiPlans.urls')),
     path('login/v1/', include('accounts.urls')),
     path('api/v1/', include('onBoarding.urls')),
+    path('api/Synck/', include('distributer.urls') ),
+    
 ]

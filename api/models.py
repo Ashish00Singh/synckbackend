@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-# create Plans models 
 
 class SynckPlan(models.Model):
     name = models.CharField(max_length=150)
